@@ -2,222 +2,471 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#b8860b">
+    <meta name="description" content="Premium photography services in Marrakech by Oussama ABIBA. Specializing in luxury hotels, architecture, portraits, and creative direction.">
+    <meta name="keywords" content="photography, Marrakech, luxury hotels, architecture, portraits, Morocco, professional photographer">
+    <meta name="author" content="Oussama ABIBA">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oussamaabiba.com">
+    <meta property="og:title" content="Oussama ABIBA | Premium Photography Marrakech">
+    <meta property="og:description" content="Capturing Morocco's essence through distinctive visual storytelling">
+    <meta property="og:image" content="static/img/gallery/Gemini_Generate.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://oussamaabiba.com">
+    <meta property="twitter:title" content="Oussama ABIBA | Premium Photography Marrakech">
+    <meta property="twitter:description" content="Capturing Morocco's essence through distinctive visual storytelling">
+    <meta property="twitter:image" content="static/img/gallery/Gemini_Generate.png">
+    
     <title>Oussama ABIBA | Premium Photography Marrakech</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="static/css/style.css" as="style">
+    <link rel="preload" href="static/img/gallery/Gemini_Generate.png" as="image">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Performance hints -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//formspree.io">
 </head>
 <body>
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <a href="#hero" class="nav-dot active" data-section="hero"></a>
-        <a href="#services" class="nav-dot" data-section="services"></a>
-        <a href="#gallery" class="nav-dot" data-section="gallery"></a>
-        <a href="#contact" class="nav-dot" data-section="contact"></a>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 0; background: var(--accent); color: var(--primary); padding: 8px; text-decoration: none; z-index: 10000; transition: top 0.3s;">Skip to main content</a>
+    
+    <!-- Enhanced Floating Navigation with ARIA labels -->
+    <nav class="floating-nav" role="navigation" aria-label="Page sections">
+        <a href="#hero" class="nav-dot active" data-section="hero" aria-label="Go to hero section"></a>
+        <a href="#services" class="nav-dot" data-section="services" aria-label="Go to services section"></a>
+        <a href="#gallery" class="nav-dot" data-section="gallery" aria-label="Go to gallery section"></a>
+        <a href="#contact" class="nav-dot" data-section="contact" aria-label="Go to contact section"></a>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="logo">ABIBA<span>.</span></div>
-            <h1>PREMIUM PHOTOGRAPHY</h1>
-            <h2>MARRAKECH</h2>
-            <p class="hero-subtitle">Capturing Morocco's essence through distinctive visual storytelling</p>
-            <div class="cta-group">
-                <a href="#contact" class="btn btn-primary">
-                    <span>📸</span> Book Session
-                </a>
-                <a href="#gallery" class="btn btn-secondary">
-                    <span>👁️</span> View Work
-                </a>
+    <!-- Main content wrapper -->
+    <main id="main-content">
+        <!-- Hero Section with enhanced structure -->
+        <section class="hero" id="hero" role="banner">
+            <div class="hero-content">
+                <div class="logo" role="img" aria-label="ABIBA Photography Logo">
+                    ABIBA<span>.</span>
+                </div>
+                <h1>PREMIUM PHOTOGRAPHY</h1>
+                <h2>MARRAKECH</h2>
+                <p class="hero-subtitle">Capturing Morocco's essence through distinctive visual storytelling</p>
+                <div class="cta-group" role="group" aria-label="Main actions">
+                    <a href="#contact" class="btn btn-primary" aria-label="Book a photography session">
+                        <span aria-hidden="true">📸</span> Book Session
+                    </a>
+                    <a href="#gallery" class="btn btn-secondary" aria-label="View photography portfolio">
+                        <span aria-hidden="true">👁️</span> View Work
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="hero-bg">
-            <img src="static/img/gallery/Gemini_Generate.png" alt="Hero Background">
-        </div>
-    </section>
+            <div class="hero-bg" aria-hidden="true">
+                <img src="static/img/gallery/Gemini_Generate.png" alt="" loading="eager">
+            </div>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>PREMIUM SERVICES</h2>
-                <p>Professional photography solutions for discerning clients</p>
+        <!-- Services Section with enhanced accessibility -->
+        <section class="services" id="services" role="main">
+            <div class="container">
+                <header class="section-header">
+                    <h2>PREMIUM SERVICES</h2>
+                    <p>Professional photography solutions for discerning clients</p>
+                </header>
+                <div class="services-grid" role="list">
+                    <article class="service-card" data-bg="static/img/services/mm.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">🏨</div>
+                        <h3>Luxury Hotels</h3>
+                        <p>Premium hospitality photography that elevates your brand's visual identity</p>
+                    </article>
+                    <article class="service-card" data-bg="static/img/services/4-.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">👤</div>
+                        <h3>Executive Portraits</h3>
+                        <p>Professional portraits that capture authenticity within Morocco's cultural context</p>
+                    </article>
+                    <article class="service-card" data-bg="static/img/services/am.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">🏛️</div>
+                        <h3>Architecture</h3>
+                        <p>Architectural documentation showcasing Morocco's design excellence</p>
+                    </article>
+                    <article class="service-card" data-bg="static/img/services/1-Camera.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">🎬</div>
+                        <h3>Creative Direction</h3>
+                        <p>Conceptual development for sophisticated visual campaigns</p>
+                    </article>
+                    <article class="service-card" data-bg="static/img/services/3-.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">📹</div>
+                        <h3>Cinematography</h3>
+                        <p>Dynamic video content capturing Marrakech's energy and movement</p>
+                    </article>
+                    <article class="service-card" data-bg="static/img/services/cn.jpg" role="listitem">
+                        <div class="service-icon" aria-hidden="true">✨</div>
+                        <h3>Post-Production</h3>
+                        <p>Professional editing and color grading for perfect aesthetic results</p>
+                    </article>
+                </div>
             </div>
-            <div class="services-grid">
-    <div class="service-card" data-bg="../img/services/mm.jpg">
-        <div class="service-icon">🏨</div>
-        <h3>Luxury Hotels</h3>
-        <p>Premium hospitality photography that elevates your brand's visual identity</p>
-    </div>
-    <div class="service-card" data-bg="../img/services/4-.jpg">
-        <div class="service-icon">👤</div>
-        <h3>Executive Portraits</h3>
-        <p>Professional portraits that capture authenticity within Morocco's cultural context</p>
-    </div>
-    <div class="service-card" data-bg="../img/services/am.jpg">
-        <div class="service-icon">🏛️</div>
-        <h3>Architecture</h3>
-        <p>Architectural documentation showcasing Morocco's design excellence</p>
-    </div>
-    <div class="service-card" data-bg="../img/services/1-Camera.jpg">
-        <div class="service-icon">🎬</div>
-        <h3>Creative Direction</h3>
-        <p>Conceptual development for sophisticated visual campaigns</p>
-    </div>
-    <div class="service-card" data-bg="../img/services/3-.jpg">
-        <div class="service-icon">📹</div>
-        <h3>Cinematography</h3>
-        <p>Dynamic video content capturing Marrakech's energy and movement</p>
-    </div>
-    <div class="service-card" data-bg="../img/services/cn.jpg">
-        <div class="service-icon">✨</div>
-        <h3>Post-Production</h3>
-        <p>Professional editing and color grading for perfect aesthetic results</p>
-    </div>
-</div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Projects Completed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">35+</div>
-                    <div class="stat-label">Premium Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">99%</div>
-                    <div class="stat-label">Client Satisfaction</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Preview -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-header">
-                <h2>SELECTED WORK</h2>
-                <p>A curated collection showcasing Marrakech's visual essence</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="static/img/services/mm.jpg" alt="Portfolio 1">
-                    <div class="gallery-overlay">
-                        <h4>Luxury Hotels</h4>
+        <!-- Stats Section with enhanced structure -->
+        <section class="stats" role="complementary" aria-label="Company statistics">
+            <div class="container">
+                <div class="stats-grid" role="list">
+                    <div class="stat-item" role="listitem">
+                        <div class="stat-number" aria-label="200 plus">200+</div>
+                        <div class="stat-label">Projects Completed</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="static/img/services/am.jpg" alt="Portfolio 2">
-                    <div class="gallery-overlay">
-                        <h4>Architecture</h4>
+                    <div class="stat-item" role="listitem">
+                        <div class="stat-number" aria-label="35 plus">35+</div>
+                        <div class="stat-label">Premium Clients</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="static/img/services/4-.jpg" alt="Portfolio 3">
-                    <div class="gallery-overlay">
-                        <h4>Portraits</h4>
+                    <div class="stat-item" role="listitem">
+                        <div class="stat-number" aria-label="5 plus">5+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="static/img/services/3-.jpg" alt="Portfolio 4">
-                    <div class="gallery-overlay">
-                        <h4>Cultural Events</h4>
+                    <div class="stat-item" role="listitem">
+                        <div class="stat-number" aria-label="99 percent">99%</div>
+                        <div class="stat-label">Client Satisfaction</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>LET'S CREATE</h2>
-                    <p>Ready to elevate your visual presence? Let's discuss your project.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <strong>Studio</strong>
-                                <p>Gueliz District, Marrakech</p>
+        <!-- Gallery Preview with enhanced accessibility -->
+        <section class="gallery" id="gallery" role="main">
+            <div class="container">
+                <header class="section-header">
+                    <h2>SELECTED WORK</h2>
+                    <p>A curated collection showcasing Marrakech's visual essence</p>
+                </header>
+                <div class="gallery-grid" role="list" aria-label="Photography portfolio gallery">
+                    <article class="gallery-item" role="listitem" tabindex="0" aria-label="Luxury Hotels photography sample">
+                        <img src="static/img/services/mm.jpg" alt="Luxury hotel interior photography showcasing elegant Moroccan design" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Luxury Hotels</h4>
+                        </div>
+                    </article>
+                    <article class="gallery-item" role="listitem" tabindex="0" aria-label="Architecture photography sample">
+                        <img src="static/img/services/am.jpg" alt="Architectural photography featuring traditional Moroccan building design" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Architecture</h4>
+                        </div>
+                    </article>
+                    <article class="gallery-item" role="listitem" tabindex="0" aria-label="Portrait photography sample">
+                        <img src="static/img/services/4-.jpg" alt="Professional executive portrait in Moroccan cultural setting" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Portraits</h4>
+                        </div>
+                    </article>
+                    <article class="gallery-item" role="listitem" tabindex="0" aria-label="Cultural events photography sample">
+                        <img src="static/img/services/3-.jpg" alt="Cultural event photography capturing Moroccan traditions" loading="lazy">
+                        <div class="gallery-overlay">
+                            <h4>Cultural Events</h4>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Contact Section -->
+        <section class="contact" id="contact" role="main">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>LET'S CREATE</h2>
+                        <p>Ready to elevate your visual presence? Let's discuss your project.</p>
+                        <div class="contact-details" role="list" aria-label="Contact information">
+                            <div class="contact-item" role="listitem">
+                                <span class="contact-icon" aria-hidden="true">📍</span>
+                                <div>
+                                    <strong>Studio</strong>
+                                    <p>Gueliz District, Marrakech</p>
+                                </div>
+                            </div>
+                            <div class="contact-item" role="listitem">
+                                <span class="contact-icon" aria-hidden="true">📞</span>
+                                <div>
+                                    <strong>Phone</strong>
+                                    <p><a href="tel:+212658287109" class="contact-link">+212 658 287 109</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item" role="listitem">
+                                <span class="contact-icon" aria-hidden="true">✉️</span>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p><a href="mailto:adobeabiba@gmail.com" class="contact-link">adobeabiba@gmail.com</a></p>
+                                </div>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <strong>Phone</strong>
-                                <p>+212 658 287 109</p>
+                    </div>
+                    
+                    <!-- Enhanced Contact Form -->
+                    <div class="contact-form">
+                        <form id="styledContactForm" action="https://formspree.io/f/mjkedgwr" method="POST" novalidate>
+                            <div class="form-group">
+                                <label for="name" class="sr-only">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required 
+                                       aria-describedby="name-error" autocomplete="name">
+                                <div id="name-error" class="error-message" role="alert"></div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <strong>Email</strong>
-                                <p>adobeabiba@gmail.com</p>
+                            
+                            <div class="form-group">
+                                <label for="email" class="sr-only">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Email Address" required 
+                                       aria-describedby="email-error" autocomplete="email">
+                                <div id="email-error" class="error-message" role="alert"></div>
                             </div>
-                        </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="sr-only">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Phone Number" 
+                                       pattern="[0-9+\-\s]{6,}" required aria-describedby="phone-error" autocomplete="tel">
+                                <div id="phone-error" class="error-message" role="alert"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="service" class="sr-only">Select Service</label>
+                                <select id="service" name="service" required aria-describedby="service-error">
+                                    <option value="">Select Service</option>
+                                    <option value="hotel">Luxury Hotels</option>
+                                    <option value="portraits">Executive Portraits</option>
+                                    <option value="architecture">Architecture</option>
+                                    <option value="cinematography">Cinematography</option>
+                                    <option value="creative-direction">Creative Direction</option>
+                                    <option value="post-production">Post-Production</option>
+                                    <option value="events">Events</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div id="service-error" class="error-message" role="alert"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="sr-only">Project Details</label>
+                                <textarea id="message" name="message" placeholder="Project Details" rows="4" required 
+                                          aria-describedby="message-error"></textarea>
+                                <div id="message-error" class="error-message" role="alert"></div>
+                            </div>
+                            
+                            <!-- Honeypot field for spam protection -->
+                            <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+                            
+                            <button type="submit" class="btn btn-primary full-width" aria-describedby="submit-status">
+                                Send Message
+                            </button>
+                            <div id="submit-status" class="submit-status" role="status" aria-live="polite"></div>
+                        </form>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="styledContactForm" action="https://formspree.io/f/mjkedgwr" method="POST">
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9+\-\s]{6,}" required>
-                        </div>
-                        <div class="form-group">
-                            <select name="service" required>
-                                <option value="">Select Service</option>
-                                <option value="hotel">Luxury Hotels</option>
-                                <option value="portraits">Executive Portraits</option>
-                                <option value="architecture">Architecture</option>
-                                <option value="events">Events</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Project Details" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary full-width">
-                            Send Message
-                        </button>
-                    </form>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer>
+    <!-- Enhanced Footer -->
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <p>&copy; 2025 Oussama ABIBA Photography. All rights reserved.</p>
-                <div class="social-links">
-                     <a href="https://www.instagram.com/oussama.abiba/" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/oussama-abiba-b8182026b/" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=100029862713874" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/@OUSSAMAABIBA" class="social-link"><i class="fab fa-youtube"></i></a>
+                <div class="social-links" role="list" aria-label="Social media links">
+                    <a href="https://www.instagram.com/oussama.abiba/" 
+                       class="social-link" 
+                       role="listitem" 
+                       aria-label="Follow on Instagram"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/oussama-abiba-b8182026b/" 
+                       class="social-link" 
+                       role="listitem" 
+                       aria-label="Connect on LinkedIn"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100029862713874" 
+                       class="social-link" 
+                       role="listitem" 
+                       aria-label="Like on Facebook"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@OUSSAMAABIBA" 
+                       class="social-link" 
+                       role="listitem" 
+                       aria-label="Subscribe on YouTube"
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="static/js/index.js"></script>
+    <!-- Screen Reader Only Styles -->
+    <style>
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .submit-status {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .submit-status.show {
+            opacity: 1;
+        }
+        
+        .submit-status.success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .submit-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .contact-link {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-link:hover,
+        .contact-link:focus {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        /* Enhanced focus styles for accessibility */
+        .gallery-item:focus,
+        .service-card:focus,
+        .btn:focus,
+        .nav-dot:focus,
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        
+        /* Reduced motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .btn {
+                border: 2px solid currentColor;
+            }
+            
+            .service-card,
+            .gallery-item,
+            .contact-item {
+                border: 2px solid var(--accent);
+            }
+        }
+        
+        /* Dark mode preference support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #0a0a0a;
+                --secondary: #f5f5f5;
+                --text: #e0e0e0;
+            }
+        }
+    </style>
+
+    <!-- Load JavaScript with proper error handling -->
+    <script>
+        // Fallback for older browsers
+        if (!window.requestAnimationFrame) {
+            window.requestAnimationFrame = function(callback) {
+                return setTimeout(callback, 16);
+            };
+        }
+        
+        // Load main script with error handling
+        const script = document.createElement('script');
+        script.src = 'static/js/index.js';
+        script.onerror = function() {
+            console.warn('Main script failed to load, providing basic functionality');
+            // Provide basic smooth scrolling as fallback
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        };
+        document.head.appendChild(script);
+    </script>
+    
+    <!-- Service Worker for offline functionality (optional) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').catch(function() {
+                    // Service worker registration failed - not critical
+                });
+            });
+        }
+    </script>
 </body>
 </html>
