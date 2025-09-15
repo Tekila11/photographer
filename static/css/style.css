@@ -404,9 +404,8 @@ body {
     gap: clamp(1rem, 3vw, 2rem);
 }
 
-/* Service card fallback styling */
+/* Enhanced service card styling with better fallbacks */
 .service-card {
-    background: rgba(17,17,17,0.9);
     padding: clamp(1.5rem, 4vw, 3rem);
     border-radius: 20px;
     border: 1px solid rgba(184,134,11,0.3);
@@ -415,46 +414,24 @@ body {
     overflow: hidden;
     backdrop-filter: var(--blur);
     transform: translateY(0);
-    opacity: 1 !important; /* Force visibility */
+    opacity: 1 !important;
     min-height: clamp(280px, 45vw, 350px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    /* Attractive gradient fallback */
+    
+    /* Default attractive background */
     background: linear-gradient(135deg, 
         rgba(17,17,17,0.95) 0%, 
-        rgba(184,134,11,0.05) 50%, 
+        rgba(184,134,11,0.1) 30%,
+        rgba(212,175,55,0.08) 70%,
         rgba(17,17,17,0.95) 100%
     );
 }
 
-/* Background image overlay */
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: var(--bg-image, 
-        linear-gradient(135deg, 
-            rgba(184,134,11,0.1), 
-            rgba(212,175,55,0.05),
-            rgba(17,17,17,0.8)
-        )
-    );
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    filter: blur(1px) brightness(0.8);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
-}
-
-/* Accent border */
+/* Top accent border for all cards */
 .service-card::after {
     content: '';
     position: absolute;
@@ -463,8 +440,45 @@ body {
     width: 100%;
     height: 3px;
     background: var(--gradient);
-    opacity: 0.7;
+    opacity: 0.8;
     z-index: 10;
+}
+
+/* Enhanced styling for cards with loaded backgrounds */
+.service-card.bg-loaded {
+    background-blend-mode: overlay;
+}
+
+/* Special styling for fallback cards */
+.service-card.bg-fallback {
+    border: 1px solid rgba(184,134,11,0.4);
+    background: linear-gradient(135deg, 
+        rgba(17,17,17,0.95) 0%, 
+        rgba(184,134,11,0.15) 25%,
+        rgba(212,175,55,0.1) 50%,
+        rgba(184,134,11,0.15) 75%,
+        rgba(17,17,17,0.95) 100%
+    );
+}
+
+.service-card.bg-fallback::after {
+    height: 4px;
+    opacity: 1;
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: var(--accent);
+    box-shadow: 
+        0 25px 70px rgba(0,0,0,0.4),
+        0 0 50px rgba(184,134,11,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.service-card:hover::after {
+    height: 5px;
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(184,134,11,0.5);
 }
 
 .service-card::after {
@@ -486,21 +500,67 @@ body {
         0 25px 70px rgba(0,0,0,0.4),
         0 0 50px rgba(184,134,11,0.3),
         inset 0 1px 0 rgba(255,255,255,0.1);
-    background: rgba(17,17,17,0.95);
-}
-
-.service-card:hover::before {
-    opacity: 0.3;
-    filter: blur(0px) brightness(1);
-    transform: scale(1.05);
 }
 
 .service-card:hover::after {
+    height: 5px;
     opacity: 1;
-    height: 4px;
+    box-shadow: 0 0 20px rgba(184,134,11,0.5);
 }
 
-/* Gallery item fallback with placeholder pattern */
+/* Content positioning - ensure text is always visible */
+.service-card .service-icon,
+.service-card h3,
+.service-card p {
+    position: relative;
+    z-index: 15; /* Higher than any background layer */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-icon {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    display: block;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(184, 134, 11, 0.4);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.2) rotate(5deg) translateY(-5px);
+    color: #ffd700;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+.service-card h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--secondary);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
+
+.service-card:hover h3 {
+    transform: translateX(5px);
+    color: #fff;
+}
+
+.service-card p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    opacity: 0.9;
+    line-height: 1.6;
+    color: var(--text);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+}
+
+.service-card:hover p {
+    opacity: 1;
+    transform: translateX(5px);
+    color: rgba(224, 224, 224, 0.95);
+}
+
+/* Gallery item fallback styling */
 .gallery-item::before {
     content: '';
     position: absolute;
@@ -523,7 +583,9 @@ body {
     z-index: 2;
 }
 
-/* Content positioning */
+.gallery-overlay {
+    z-index: 5;
+}
 
 .service-card .service-icon,
 .service-card h3,
