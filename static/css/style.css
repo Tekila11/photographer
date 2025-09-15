@@ -588,6 +588,7 @@ body {
 
 .service-card:hover::before {
     opacity: 50%;
+    filter: blur(0px) brightness(100%);
     transform: scale(1.05);
 }
 
