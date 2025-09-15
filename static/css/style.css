@@ -594,6 +594,7 @@ body {
 
 .service-card:hover::after {
     transform: scaleX(1);
+    opacity: 1;
 }
 
 .service-card:hover {
