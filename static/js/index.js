@@ -580,35 +580,35 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Form handling
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    // const contactForm = document.getElementById('contactForm');
+    // if (contactForm) {
+    //     contactForm.addEventListener('submit', function(e) {
+    //         e.preventDefault();
             
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
+    //         const submitBtn = this.querySelector('button[type="submit"]');
+    //         const originalText = submitBtn.textContent;
             
-            // Show loading state
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
+    //         // Show loading state
+    //         submitBtn.textContent = 'Sending...';
+    //         submitBtn.disabled = true;
             
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = '#22c55e';
+    //         // Simulate form submission (replace with actual API call)
+    //         setTimeout(() => {
+    //             submitBtn.textContent = 'Message Sent!';
+    //             submitBtn.style.background = '#22c55e';
                 
-                // Reset form
-                this.reset();
+    //             // Reset form
+    //             this.reset();
                 
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                }, 3000);
-            }, 2000);
-        });
-    }
+    //             // Reset button after 3 seconds
+    //             setTimeout(() => {
+    //                 submitBtn.textContent = originalText;
+    //                 submitBtn.disabled = false;
+    //                 submitBtn.style.background = '';
+    //             }, 3000);
+    //         }, 2000);
+    //     });
+    // }
     
     // Gallery hover effects
     const galleryItems = document.querySelectorAll('.gallery-item');
