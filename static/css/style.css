@@ -587,14 +587,14 @@ body {
 }
 
 .service-card:hover::before {
-    opacity: 0.4;
+    opacity: 50%;
     filter: blur(0px) brightness(0.6);
     transform: scale(1.05);
 }
 
 .service-card:hover::after {
     transform: scaleX(1);
-    opacity: 1;
+    opacity: 100%;
 }
 
 .service-card:hover {
