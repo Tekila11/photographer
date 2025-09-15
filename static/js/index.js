@@ -439,34 +439,64 @@ function initAdvancedEffects() {
     initTextRevealAnimations();
 }
 
-// Enhanced service card background initialization with fallback
+// Enhanced service card background initialization with better error handling
 function initServiceCardBackgrounds() {
     document.querySelectorAll('.service-card').forEach((card, index) => {
-        // Make cards visible immediately
+        // Make cards visible immediately with attractive styling
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
         
         const bgImage = card.getAttribute('data-bg');
         if (bgImage) {
-            // Preload the background image
+            // Create a test image to check if the path exists
             const img = new Image();
             img.onload = () => {
+                // Image loaded successfully
                 card.style.setProperty('--bg-image', `url(${bgImage})`);
                 card.classList.add('bg-loaded');
+                card.style.background = `
+                    linear-gradient(135deg, 
+                        rgba(17,17,17,0.85) 0%, 
+                        rgba(184,134,11,0.05) 50%, 
+                        rgba(17,17,17,0.85) 100%
+                    ),
+                    url(${bgImage})
+                `;
+                card.style.backgroundSize = 'cover';
+                card.style.backgroundPosition = 'center';
+                card.style.backgroundRepeat = 'no-repeat';
             };
             img.onerror = () => {
-                // Fallback: use gradient background if image fails
-                card.style.setProperty('--bg-image', 'linear-gradient(135deg, rgba(184,134,11,0.1), rgba(17,17,17,0.9))');
+                // Image failed to load, use enhanced gradient
+                console.log(`Background image failed to load: ${bgImage}`);
+                card.style.setProperty('--bg-image', 'none');
+                card.style.background = `
+                    linear-gradient(135deg, 
+                        rgba(17,17,17,0.95) 0%, 
+                        rgba(184,134,11,0.15) 30%,
+                        rgba(212,175,55,0.1) 70%,
+                        rgba(17,17,17,0.95) 100%
+                    )
+                `;
+                card.classList.add('bg-fallback');
             };
             img.src = bgImage;
         } else {
-            // Fallback gradient for cards without data-bg
-            card.style.setProperty('--bg-image', 'linear-gradient(135deg, rgba(184,134,11,0.1), rgba(17,17,17,0.9))');
+            // No background image specified, use attractive gradient
+            card.style.background = `
+                linear-gradient(135deg, 
+                    rgba(17,17,17,0.95) 0%, 
+                    rgba(184,134,11,0.1) 50%, 
+                    rgba(17,17,17,0.95) 100%
+                )
+            `;
+            card.classList.add('bg-fallback');
         }
         
-        // Add staggered entrance animation after a delay
+        // Add staggered entrance animation
         setTimeout(() => {
             card.style.animation = `serviceCardEntry 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+            card.style.transform = 'translateY(0) scale(1)';
         }, index * 150);
     });
 }
