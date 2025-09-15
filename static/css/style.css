@@ -404,6 +404,7 @@ body {
     gap: clamp(1rem, 3vw, 2rem);
 }
 
+/* Service card fallback styling */
 .service-card {
     background: rgba(17,17,17,0.9);
     padding: clamp(1.5rem, 4vw, 3rem);
@@ -413,14 +414,20 @@ body {
     position: relative;
     overflow: hidden;
     backdrop-filter: var(--blur);
-    transform: translateY(50px);
-    opacity: 1; /* Make immediately visible */
+    transform: translateY(0);
+    opacity: 1 !important; /* Force visibility */
     min-height: clamp(280px, 45vw, 350px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    /* Attractive gradient fallback */
+    background: linear-gradient(135deg, 
+        rgba(17,17,17,0.95) 0%, 
+        rgba(184,134,11,0.05) 50%, 
+        rgba(17,17,17,0.95) 100%
+    );
 }
 
 /* Background image overlay */
@@ -431,28 +438,33 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: var(--bg-image, none);
+    background-image: var(--bg-image, 
+        linear-gradient(135deg, 
+            rgba(184,134,11,0.1), 
+            rgba(212,175,55,0.05),
+            rgba(17,17,17,0.8)
+        )
+    );
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.15;
-    filter: blur(1px) brightness(0.7);
+    opacity: 0.2;
+    filter: blur(1px) brightness(0.8);
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1;
 }
 
-/* Gradient overlay */
+/* Accent border */
 .service-card::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(184,134,11,0.1), rgba(17,17,17,0.8));
-    opacity: 1;
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2;
+    height: 3px;
+    background: var(--gradient);
+    opacity: 0.7;
+    z-index: 10;
 }
 
 .service-card::after {
@@ -478,13 +490,37 @@ body {
 }
 
 .service-card:hover::before {
-    opacity: 0.25;
+    opacity: 0.3;
     filter: blur(0px) brightness(1);
     transform: scale(1.05);
 }
 
 .service-card:hover::after {
-    opacity: 0.7;
+    opacity: 1;
+    height: 4px;
+}
+
+/* Gallery item fallback with placeholder pattern */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(17,17,17,0.9) 0%,
+        rgba(184,134,11,0.1) 25%,
+        rgba(17,17,17,0.9) 50%,
+        rgba(184,134,11,0.1) 75%,
+        rgba(17,17,17,0.9) 100%
+    );
+    z-index: 1;
+}
+
+.gallery-item img {
+    position: relative;
+    z-index: 2;
 }
 
 /* Content positioning */
@@ -602,7 +638,7 @@ body {
     color: var(--accent);
 }
 
-/* Gallery Section - Enhanced Grid with Stagger */
+/* Gallery Section - Enhanced Grid with better visibility */
 .gallery {
     padding: clamp(4rem, 10vh, 8rem) 0;
     background: #0d0d0d;
@@ -633,15 +669,18 @@ body {
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(60px) rotateX(10deg);
-    opacity: 0;
+    transform: translateY(0); /* Ensure visible */
+    opacity: 1; /* Make visible by default */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(17, 17, 17, 0.8); /* Fallback background */
+    border: 1px solid rgba(184, 134, 11, 0.2);
 }
 
 .gallery-item:hover {
-    transform: scale(1.05) translateY(-10px) rotateX(0deg);
+    transform: scale(1.05) translateY(-10px);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     z-index: 10;
+    border-color: var(--accent);
 }
 
 .gallery-item img {
@@ -649,7 +688,8 @@ body {
     height: 100%;
     object-fit: cover;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    filter: brightness(0.8) contrast(1.1);
+    filter: brightness(0.9) contrast(1.1);
+    display: block; /* Ensure images display */
 }
 
 .gallery-item:hover img {
@@ -665,12 +705,19 @@ body {
     background: linear-gradient(transparent, rgba(0,0,0,0.9));
     color: white;
     padding: clamp(1rem, 3vw, 2rem);
-    transform: translateY(100%);
+    transform: translateY(0); /* Always visible on mobile */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.gallery-item:hover .gallery-overlay {
-    transform: translateY(0);
+/* Desktop hover behavior */
+@media (min-width: 769px) {
+    .gallery-overlay {
+        transform: translateY(100%);
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+    }
 }
 
 .gallery-overlay h4 {
@@ -678,6 +725,7 @@ body {
     font-weight: 600;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     animation: overlaySlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+    margin: 0;
 }
 
 /* Contact Section - Mobile First Enhanced */
