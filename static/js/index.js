@@ -182,9 +182,28 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.forEach(element => observer.observe(element));
     };
     
-    // Service cards stagger animation
+    // Service cards stagger animation - simplified approach
     const serviceCards = document.querySelectorAll('.service-card');
-    createStaggerObserver(serviceCards, 'serviceCardEntry', 150);
+    serviceCards.forEach((card, index) => {
+        // Ensure cards are visible
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        
+        // Add entrance animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = 'serviceCardEntry 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                        entry.target.style.transform = 'translateY(0) scale(1)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        
+        observer.observe(card);
+    });
     
     // Gallery items stagger animation
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -420,9 +439,13 @@ function initAdvancedEffects() {
     initTextRevealAnimations();
 }
 
-// Enhanced service card background initialization
+// Enhanced service card background initialization with fallback
 function initServiceCardBackgrounds() {
-    document.querySelectorAll('.service-card').forEach(card => {
+    document.querySelectorAll('.service-card').forEach((card, index) => {
+        // Make cards visible immediately
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        
         const bgImage = card.getAttribute('data-bg');
         if (bgImage) {
             // Preload the background image
@@ -431,8 +454,20 @@ function initServiceCardBackgrounds() {
                 card.style.setProperty('--bg-image', `url(${bgImage})`);
                 card.classList.add('bg-loaded');
             };
+            img.onerror = () => {
+                // Fallback: use gradient background if image fails
+                card.style.setProperty('--bg-image', 'linear-gradient(135deg, rgba(184,134,11,0.1), rgba(17,17,17,0.9))');
+            };
             img.src = bgImage;
+        } else {
+            // Fallback gradient for cards without data-bg
+            card.style.setProperty('--bg-image', 'linear-gradient(135deg, rgba(184,134,11,0.1), rgba(17,17,17,0.9))');
         }
+        
+        // Add staggered entrance animation after a delay
+        setTimeout(() => {
+            card.style.animation = `serviceCardEntry 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+        }, index * 150);
     });
 }
 
