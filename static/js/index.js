@@ -1115,3 +1115,27 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
   }
 });
+
+// Floating nav active state on scroll
+const sections = document.querySelectorAll("section[id]");
+const navDots = document.querySelectorAll(".floating-nav .nav-dot");
+
+function activateNavDot() {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100; // offset for header spacing
+    if (pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navDots.forEach(dot => {
+    dot.classList.remove("active");
+    if (dot.getAttribute("data-section") === current) {
+      dot.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", activateNavDot);
