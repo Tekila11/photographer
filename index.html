@@ -42,6 +42,17 @@
     <link rel="dns-prefetch" href="//formspree.io">
 </head>
 <body>
+    <header class="top-bar">
+  <div class="container top-bar-content">
+    <div class="logo">OUSSAMA <span>ABIBA</span></div>
+    <nav class="top-nav">
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
     <!-- Skip to main content for accessibility -->
     <a href="#main-content" class="skip-link" style="position: absolute; top: -40px; left: 0; background: var(--accent); color: var(--primary); padding: 8px; text-decoration: none; z-index: 10000; transition: top 0.3s;">Skip to main content</a>
     
@@ -57,26 +68,29 @@
     <main id="main-content">
         <!-- Hero Section with enhanced structure -->
         <section class="hero" id="hero" role="banner">
-            <div class="hero-content">
-                <div class="logo" role="img" aria-label="ABIBA Photography Logo">
-                    ABIBA<span>.</span>
-                </div>
-                <h1>PREMIUM PHOTOGRAPHY</h1>
-                <h2>MARRAKECH</h2>
-                <p class="hero-subtitle">Capturing Morocco's essence through distinctive visual storytelling</p>
-                <div class="cta-group" role="group" aria-label="Main actions">
-                    <a href="#contact" class="btn btn-primary" aria-label="Book a photography session">
-                        <span aria-hidden="true">📸</span> Book Session
-                    </a>
-                    <a href="#gallery" class="btn btn-secondary" aria-label="View photography portfolio">
-                        <span aria-hidden="true">👁️</span> View Work
-                    </a>
-                </div>
-            </div>
-            <div class="hero-bg" aria-hidden="true">
-                <img src="static/img/gallery/Gemini_Generate.png" alt="" loading="eager">
-            </div>
-        </section>
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Use a full-screen image or background video -->
+    <img src="static/img/gallery/Gemini_Generate.png" alt="" loading="eager">
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content container">
+    <h1 class="hero-title">Oussama Abiba</h1>
+    <h2 class="hero-subtitle">Premium Photography in Marrakech</h2>
+    <p class="hero-tagline">Luxury hotels · Architecture · Portraits · Creative Direction</p>
+
+    <div class="cta-group" role="group" aria-label="Main actions">
+      <a href="#gallery" class="btn btn-primary" aria-label="View portfolio">
+        View Portfolio
+      </a>
+      <a href="#contact" class="btn btn-secondary" aria-label="Book a session">
+        Book a Session
+      </a>
+    </div>
+  </div>
+</section>
+
 
         <!-- Services Section with enhanced accessibility -->
         <section class="services" id="services" role="main">
