@@ -1115,7 +1115,6 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
   }
 });
-
 // Floating nav active state on scroll
 const sections = document.querySelectorAll("section[id]");
 const navDots = document.querySelectorAll(".floating-nav .nav-dot");
@@ -1139,3 +1138,4 @@ function activateNavDot() {
 }
 
 window.addEventListener("scroll", activateNavDot);
+
