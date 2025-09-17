@@ -1100,3 +1100,18 @@ const additionalAnimations = `
 const animationStyleSheet = document.createElement('style');
 animationStyleSheet.textContent = additionalAnimations;
 document.head.appendChild(animationStyleSheet);
+
+// === Service Cards Hover Background ===
+document.querySelectorAll('.service-card').forEach(card => {
+  const bg = card.getAttribute('data-bg');
+  if (bg) {
+    card.addEventListener('mouseenter', () => {
+      card.style.backgroundImage = `url(${bg})`;
+      card.style.backgroundSize = 'cover';
+      card.style.backgroundPosition = 'center';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.backgroundImage = '';
+    });
+  }
+});
