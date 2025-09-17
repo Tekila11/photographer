@@ -656,7 +656,7 @@ body {
 }
 
 .stat-item {
-    opacity: 0;
+    opacity: 1;
     transform: translateY(40px) scale(0.8);
     animation: statReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
