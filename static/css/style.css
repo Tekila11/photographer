@@ -1887,3 +1887,31 @@ footer::before {
         bottom: 1rem;
     }
 }
+
+/* Fix contact links styling */
+.contact-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.contact-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.contact-link:hover::after {
+    width: 100%;
+}
