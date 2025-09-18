@@ -1891,13 +1891,13 @@ footer::before {
 }
 
 /* Remove random particle shapes and keep only subtle circle effect */
-/* #particle-canvas {
+#particle-canvas {
     display: none !important;
 }
 
 .morphing-background {
     display: none !important;
-} */
+}
 
 /* Add subtle background enhancement */
 .hero-bg::after {
@@ -1979,64 +1979,4 @@ footer::before {
         top: 30%;
         right: 10%;
     }
-}
-
-/* Particle Canvas Styles - Add this to your style.css */
-
-#particle-canvas {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    pointer-events: none !important;
-    z-index: 2 !important;
-    opacity: 0.7 !important;
-    display: block !important; /* Override any display: none */
-}
-
-/* Ensure particles are visible on desktop only */
-@media (min-width: 769px) {
-    #particle-canvas {
-        display: block !important;
-        opacity: 0.7 !important;
-    }
-}
-
-/* Hide on mobile/tablet */
-@media (max-width: 768px) {
-    #particle-canvas {
-        display: none !important;
-    }
-}
-
-/* Hide on touch devices */
-@media (hover: none) and (pointer: coarse) {
-    #particle-canvas {
-        display: none !important;
-    }
-}
-
-/* Remove any conflicting styles */
-.mobile-device #particle-canvas {
-    display: none !important;
-}
-
-/* Fix other visual elements that might interfere */
-.morphing-background {
-    display: none !important;
-}
-
-.mouse-trail {
-    display: none !important;
-}
-
-.advanced-cursor {
-    display: none !important;
-}
-
-/* Debug styles - remove after testing */
-#particle-canvas.debug {
-    border: 2px solid red !important;
-    background: rgba(255, 0, 0, 0.1) !important;
 }
