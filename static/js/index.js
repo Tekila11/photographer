@@ -1150,3 +1150,254 @@ window.addEventListener("scroll", () => {
     topBar.classList.remove("scrolled");
   }
 });
+
+
+// Language translations object
+const translations = {
+    en: {
+        hero_title: "PREMIUM PHOTOGRAPHY",
+        hero_location: "MARRAKECH",
+        hero_subtitle: "Capturing Morocco's essence through distinctive visual storytelling",
+        btn_book: "Book Session",
+        btn_view: "View Work",
+        services_title: "PREMIUM SERVICES",
+        services_subtitle: "Professional photography solutions for discerning clients",
+        service_hotels: "Luxury Hotels",
+        service_hotels_desc: "Premium hospitality photography that elevates your brand's visual identity",
+        service_portraits: "Executive Portraits",
+        service_portraits_desc: "Professional portraits that capture authenticity within Morocco's cultural context",
+        service_architecture: "Architecture",
+        service_architecture_desc: "Architectural documentation showcasing Morocco's design excellence",
+        service_creative: "Creative Direction",
+        service_creative_desc: "Conceptual development for sophisticated visual campaigns",
+        service_cinema: "Cinematography",
+        service_cinema_desc: "Dynamic video content capturing Marrakech's energy and movement",
+        service_post: "Post-Production",
+        service_post_desc: "Professional editing and color grading for perfect aesthetic results",
+        stats_projects: "Projects Completed",
+        stats_clients: "Premium Clients",
+        stats_experience: "Years Experience",
+        stats_satisfaction: "Client Satisfaction",
+        gallery_title: "SELECTED WORK",
+        gallery_subtitle: "A curated collection showcasing Marrakech's visual essence",
+        contact_title: "LET'S CREATE",
+        contact_subtitle: "Ready to elevate your visual presence? Let's discuss your project.",
+        contact_studio: "Studio",
+        contact_phone: "Phone",
+        contact_email: "Email",
+        form_name: "Your Name",
+        form_email: "Email Address",
+        form_phone: "Phone Number",
+        form_service: "Select Service",
+        form_message: "Project Details",
+        form_send: "Send Message",
+        footer_rights: "All rights reserved."
+    },
+    fr: {
+        hero_title: "PHOTOGRAPHIE PREMIUM",
+        hero_location: "MARRAKECH",
+        hero_subtitle: "Capturer l'essence du Maroc à travers une narration visuelle distinctive",
+        btn_book: "Réserver Session",
+        btn_view: "Voir Portfolio",
+        services_title: "SERVICES PREMIUM",
+        services_subtitle: "Solutions photographiques professionnelles pour une clientèle exigeante",
+        service_hotels: "Hôtels de Luxe",
+        service_hotels_desc: "Photographie hôtelière premium qui élève l'identité visuelle de votre marque",
+        service_portraits: "Portraits Exécutifs",
+        service_portraits_desc: "Portraits professionnels capturant l'authenticité dans le contexte culturel marocain",
+        service_architecture: "Architecture",
+        service_architecture_desc: "Documentation architecturale mettant en valeur l'excellence du design marocain",
+        service_creative: "Direction Créative",
+        service_creative_desc: "Développement conceptuel pour des campagnes visuelles sophistiquées",
+        service_cinema: "Cinématographie",
+        service_cinema_desc: "Contenu vidéo dynamique capturant l'énergie et le mouvement de Marrakech",
+        service_post: "Post-Production",
+        service_post_desc: "Montage professionnel et étalonnage couleur pour des résultats esthétiques parfaits",
+        stats_projects: "Projets Réalisés",
+        stats_clients: "Clients Premium",
+        stats_experience: "Années d'Expérience",
+        stats_satisfaction: "Satisfaction Client",
+        gallery_title: "ŒUVRES SÉLECTIONNÉES",
+        gallery_subtitle: "Une collection organisée présentant l'essence visuelle de Marrakech",
+        contact_title: "CRÉONS ENSEMBLE",
+        contact_subtitle: "Prêt à élever votre présence visuelle? Discutons de votre projet.",
+        contact_studio: "Studio",
+        contact_phone: "Téléphone",
+        contact_email: "Email",
+        form_name: "Votre Nom",
+        form_email: "Adresse Email",
+        form_phone: "Numéro de Téléphone",
+        form_service: "Sélectionner Service",
+        form_message: "Détails du Projet",
+        form_send: "Envoyer Message",
+        footer_rights: "Tous droits réservés."
+    },
+    es: {
+        hero_title: "FOTOGRAFÍA PREMIUM",
+        hero_location: "MARRAKECH",
+        hero_subtitle: "Capturando la esencia de Marruecos a través de narrativa visual distintiva",
+        btn_book: "Reservar Sesión",
+        btn_view: "Ver Trabajo",
+        services_title: "SERVICIOS PREMIUM",
+        services_subtitle: "Soluciones fotográficas profesionales para clientes exigentes",
+        service_hotels: "Hoteles de Lujo",
+        service_hotels_desc: "Fotografía hotelera premium que eleva la identidad visual de tu marca",
+        service_portraits: "Retratos Ejecutivos",
+        service_portraits_desc: "Retratos profesionales que capturan autenticidad dentro del contexto cultural marroquí",
+        service_architecture: "Arquitectura",
+        service_architecture_desc: "Documentación arquitectónica mostrando la excelencia del diseño marroquí",
+        service_creative: "Dirección Creativa",
+        service_creative_desc: "Desarrollo conceptual para campañas visuales sofisticadas",
+        service_cinema: "Cinematografía",
+        service_cinema_desc: "Contenido de video dinámico capturando la energía y movimiento de Marrakech",
+        service_post: "Post-Producción",
+        service_post_desc: "Edición profesional y corrección de color para resultados estéticos perfectos",
+        stats_projects: "Proyectos Completados",
+        stats_clients: "Clientes Premium",
+        stats_experience: "Años de Experiencia",
+        stats_satisfaction: "Satisfacción del Cliente",
+        gallery_title: "TRABAJO SELECCIONADO",
+        gallery_subtitle: "Una colección curada mostrando la esencia visual de Marrakech",
+        contact_title: "CREEMOS JUNTOS",
+        contact_subtitle: "¿Listo para elevar tu presencia visual? Hablemos de tu proyecto.",
+        contact_studio: "Estudio",
+        contact_phone: "Teléfono",
+        contact_email: "Email",
+        form_name: "Tu Nombre",
+        form_email: "Dirección de Email",
+        form_phone: "Número de Teléfono",
+        form_service: "Seleccionar Servicio",
+        form_message: "Detalles del Proyecto",
+        form_send: "Enviar Mensaje",
+        footer_rights: "Todos los derechos reservados."
+    }
+};
+
+// Language switcher functionality
+class LanguageSwitcher {
+    constructor() {
+        this.currentLang = localStorage.getItem('language') || 'en';
+        this.init();
+    }
+
+    init() {
+        this.createSwitcher();
+        this.bindEvents();
+        this.setLanguage(this.currentLang);
+    }
+
+    createSwitcher() {
+        const switcher = document.createElement('div');
+        switcher.className = 'language-switcher';
+        switcher.innerHTML = `
+            <button class="lang-btn ${this.currentLang === 'en' ? 'active' : ''}" data-lang="en">EN</button>
+            <button class="lang-btn ${this.currentLang === 'fr' ? 'active' : ''}" data-lang="fr">FR</button>
+            <button class="lang-btn ${this.currentLang === 'es' ? 'active' : ''}" data-lang="es">ES</button>
+        `;
+        document.body.appendChild(switcher);
+    }
+
+    bindEvents() {
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('lang-btn')) {
+                const lang = e.target.dataset.lang;
+                this.setLanguage(lang);
+            }
+        });
+    }
+
+    setLanguage(lang) {
+        if (!translations[lang]) return;
+
+        this.currentLang = lang;
+        localStorage.setItem('language', lang);
+        
+        // Update active button
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === lang);
+        });
+
+        // Update content with fade effect
+        document.body.classList.add('content-fade');
+        
+        setTimeout(() => {
+            this.translateContent(lang);
+            document.body.classList.remove('content-fade');
+            document.body.classList.add('active');
+            
+            setTimeout(() => {
+                document.body.classList.remove('active');
+            }, 300);
+        }, 150);
+
+        // Update HTML lang attribute
+        document.documentElement.lang = lang;
+    }
+
+    translateContent(lang) {
+        const elements = document.querySelectorAll('[data-translate]');
+        elements.forEach(element => {
+            const key = element.dataset.translate;
+            if (translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Update form placeholders
+        const placeholderElements = document.querySelectorAll('[data-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.dataset.placeholder;
+            if (translations[lang][key]) {
+                element.placeholder = translations[lang][key];
+            }
+        });
+
+        // Update select options
+        this.updateSelectOptions(lang);
+    }
+
+    updateSelectOptions(lang) {
+        const serviceSelect = document.querySelector('select[name="service"]');
+        if (serviceSelect) {
+            const options = {
+                en: [
+                    { value: "", text: "Select Service" },
+                    { value: "hotel", text: "Luxury Hotels" },
+                    { value: "portraits", text: "Executive Portraits" },
+                    { value: "architecture", text: "Architecture" },
+                    { value: "events", text: "Events" },
+                    { value: "other", text: "Other" }
+                ],
+                fr: [
+                    { value: "", text: "Sélectionner Service" },
+                    { value: "hotel", text: "Hôtels de Luxe" },
+                    { value: "portraits", text: "Portraits Exécutifs" },
+                    { value: "architecture", text: "Architecture" },
+                    { value: "events", text: "Événements" },
+                    { value: "other", text: "Autre" }
+                ],
+                es: [
+                    { value: "", text: "Seleccionar Servicio" },
+                    { value: "hotel", text: "Hoteles de Lujo" },
+                    { value: "portraits", text: "Retratos Ejecutivos" },
+                    { value: "architecture", text: "Arquitectura" },
+                    { value: "events", text: "Eventos" },
+                    { value: "other", text: "Otro" }
+                ]
+            };
+
+            serviceSelect.innerHTML = '';
+            options[lang].forEach(option => {
+                const optElement = document.createElement('option');
+                optElement.value = option.value;
+                optElement.textContent = option.text;
+                serviceSelect.appendChild(optElement);
+            });
+        }
+    }
+}
+
+// Initialize language switcher when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new LanguageSwitcher();
+});
