@@ -137,20 +137,18 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
-/* Fix top bar logo alignment */
 .top-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* Logo */
 .top-bar .logo {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--secondary);
-    text-align: left; /* Ensure left alignment */
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--secondary);
 }
 
 .top-bar .logo span {
@@ -1887,96 +1885,5 @@ footer::before {
     .floating-nav {
         right: 1rem;
         bottom: 1rem;
-    }
-}
-
-/* Remove random particle shapes and keep only subtle circle effect */
-#particle-canvas {
-    display: none !important;
-}
-
-.morphing-background {
-    display: none !important;
-}
-
-/* Add subtle background enhancement */
-.hero-bg::after {
-    content: '';
-    position: absolute;
-    top: 20%;
-    right: 15%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    animation: floatGlow 8s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes floatGlow {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translateY(-20px) scale(1.1);
-        opacity: 0.5;
-    }
-}
-
-/* Fix contact links styling */
-.contact-link {
-    color: var(--text);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.contact-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s ease;
-}
-
-.contact-link:hover {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.contact-link:hover::after {
-    width: 100%;
-}
-
-/* Ensure mouse trail is disabled */
-.mouse-trail {
-    display: none !important;
-}
-
-.advanced-cursor {
-    display: none !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-    .top-bar {
-        padding: 0.75rem 1rem;
-    }
-    
-    .top-bar .logo {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-    }
-    
-    .hero-bg::after {
-        width: 200px;
-        height: 200px;
-        top: 30%;
-        right: 10%;
     }
 }
