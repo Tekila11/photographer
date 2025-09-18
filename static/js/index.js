@@ -788,33 +788,20 @@ function createInputGlow(input) {
 }
 
 // Particle system for desktop only
-// Complete particle system - add this to your index.js
-
-// Particle system for desktop only
 function createParticleSystem() {
-    console.log('Creating particle system...');
-    
-    // Check if mobile
-    if (window.innerWidth <= 768 || isMobileDevice()) {
-        console.log('Mobile device detected - skipping particles');
-        return;
-    }
+    if (isMobileDevice()) return;
     
     const canvas = document.createElement('canvas');
     canvas.id = 'particle-canvas';
-    canvas.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 2;
-        opacity: 1;
-    `;
-    
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '1';
+    canvas.style.opacity = '0.4';
     document.body.appendChild(canvas);
-    console.log('Canvas added to DOM');
     
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -823,28 +810,27 @@ function createParticleSystem() {
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        console.log(`Canvas resized to: ${canvas.width}x${canvas.height}`);
     }
     
     class Particle {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 1;
-            this.vy = (Math.random() - 0.5) * 1;
-            this.size = Math.random() * 4 + 2; // 2-6px
-            this.opacity = Math.random() * 0.8 + 0.2; // 0.2-1.0
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.size = Math.random() * 2 + 0.5;
+            this.opacity = Math.random() * 0.3 + 0.1;
+            this.color = `hsl(${Math.random() * 60 + 30}, 70%, 60%)`;
         }
         
         update() {
             this.x += this.vx;
             this.y += this.vy;
             
-            // Bounce off edges
-            if (this.x <= 0 || this.x >= canvas.width) this.vx *= -1;
-            if (this.y <= 0 || this.y >= canvas.height) this.vy *= -1;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             
-            // Keep in bounds
+            // Boundary wrapping
             this.x = Math.max(0, Math.min(canvas.width, this.x));
             this.y = Math.max(0, Math.min(canvas.height, this.y));
         }
@@ -852,14 +838,9 @@ function createParticleSystem() {
         draw() {
             ctx.save();
             ctx.globalAlpha = this.opacity;
-            ctx.fillStyle = '#b8860b'; // Your accent color
+            ctx.fillStyle = this.color;
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-            
-            // Add glow
-            ctx.shadowBlur = 20;
-            ctx.shadowColor = '#b8860b';
             ctx.fill();
             ctx.restore();
         }
@@ -867,90 +848,62 @@ function createParticleSystem() {
     
     function init() {
         particles = [];
-        const particleCount = 40; // Fixed number for testing
-        
+        const particleCount = Math.min(30, Math.floor(canvas.width / 50));
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
-        
-        console.log(`Initialized ${particles.length} particles`);
     }
     
     function animate() {
-        // Clear with semi-transparent background for trail effect
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         
-        particles.forEach((particle, index) => {
+        particles.forEach(particle => {
             particle.update();
             particle.draw();
         });
         
-        // Draw connections
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
+        // Draw connections with distance limit
+        particles.forEach((particle, i) => {
+            particles.slice(i + 1).forEach(otherParticle => {
+                const dx = particle.x - otherParticle.x;
+                const dy = particle.y - otherParticle.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                if (distance < 100) {
+                if (distance < 120) {
                     ctx.save();
-                    ctx.globalAlpha = 0.3 * (1 - distance / 100);
+                    ctx.globalAlpha = 0.1 * (1 - distance / 120);
                     ctx.strokeStyle = '#b8860b';
-                    ctx.lineWidth = 1;
+                    ctx.lineWidth = 0.5;
                     ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.moveTo(particle.x, particle.y);
+                    ctx.lineTo(otherParticle.x, otherParticle.y);
                     ctx.stroke();
                     ctx.restore();
                 }
-            }
-        }
+            });
+        });
         
         animationId = requestAnimationFrame(animate);
     }
     
-    // Initialize
     resizeCanvas();
     init();
     animate();
     
-    // Handle resize
     window.addEventListener('resize', () => {
         resizeCanvas();
         init();
     });
     
-    // Handle visibility change
+    // Pause animation when page is not visible
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
             cancelAnimationFrame(animationId);
-            console.log('Animation paused');
         } else {
             animate();
-            console.log('Animation resumed');
         }
     });
-    
-    console.log('Particle system fully initialized');
 }
-
-// Mobile device detection
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-           (window.innerWidth <= 768) ||
-           ('ontouchstart' in window);
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, checking for particles...');
-    
-    // Add a delay to ensure everything is loaded
-    setTimeout(() => {
-        createParticleSystem();
-    }, 1000);
-});
 
 // Mouse trail effect for desktop
 function createMouseTrail() {
