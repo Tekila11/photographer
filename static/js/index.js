@@ -1151,15 +1151,17 @@ window.addEventListener("scroll", () => {
   }
 });
 
-
 // Language translations object
 const translations = {
     en: {
-        hero_title: "PREMIUM PHOTOGRAPHY",
-        hero_location: "MARRAKECH",
-        hero_subtitle: "Capturing Morocco's essence through distinctive visual storytelling",
-        btn_book: "Book Session",
-        btn_view: "View Work",
+        hero_title: "Oussama Abiba",
+        hero_subtitle: "Premium Photography in Marrakech", 
+        hero_tagline: "Luxury hotels · Architecture · Portraits · Creative Direction",
+        btn_view_portfolio: "View Portfolio",
+        btn_book_session: "Book a Session",
+        nav_services: "Services",
+        nav_gallery: "Gallery", 
+        nav_contact: "Contact",
         services_title: "PREMIUM SERVICES",
         services_subtitle: "Professional photography solutions for discerning clients",
         service_hotels: "Luxury Hotels",
@@ -1194,11 +1196,14 @@ const translations = {
         footer_rights: "All rights reserved."
     },
     fr: {
-        hero_title: "PHOTOGRAPHIE PREMIUM",
-        hero_location: "MARRAKECH",
-        hero_subtitle: "Capturer l'essence du Maroc à travers une narration visuelle distinctive",
-        btn_book: "Réserver Session",
-        btn_view: "Voir Portfolio",
+        hero_title: "Oussama Abiba",
+        hero_subtitle: "Photographie Premium à Marrakech",
+        hero_tagline: "Hôtels de luxe · Architecture · Portraits · Direction créative",
+        btn_view_portfolio: "Voir Portfolio",
+        btn_book_session: "Réserver Session",
+        nav_services: "Services",
+        nav_gallery: "Galerie",
+        nav_contact: "Contact",
         services_title: "SERVICES PREMIUM",
         services_subtitle: "Solutions photographiques professionnelles pour une clientèle exigeante",
         service_hotels: "Hôtels de Luxe",
@@ -1233,11 +1238,14 @@ const translations = {
         footer_rights: "Tous droits réservés."
     },
     es: {
-        hero_title: "FOTOGRAFÍA PREMIUM",
-        hero_location: "MARRAKECH",
-        hero_subtitle: "Capturando la esencia de Marruecos a través de narrativa visual distintiva",
-        btn_book: "Reservar Sesión",
-        btn_view: "Ver Trabajo",
+        hero_title: "Oussama Abiba", 
+        hero_subtitle: "Fotografía Premium en Marrakech",
+        hero_tagline: "Hoteles de lujo · Arquitectura · Retratos · Dirección creativa",
+        btn_view_portfolio: "Ver Portfolio",
+        btn_book_session: "Reservar Sesión",
+        nav_services: "Servicios",
+        nav_gallery: "Galería",
+        nav_contact: "Contacto",
         services_title: "SERVICIOS PREMIUM",
         services_subtitle: "Soluciones fotográficas profesionales para clientes exigentes",
         service_hotels: "Hoteles de Lujo",
