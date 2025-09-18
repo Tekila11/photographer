@@ -1980,3 +1980,46 @@ footer::before {
         right: 10%;
     }
 }
+
+/* Remove or comment out these lines from your CSS: */
+
+/* 
+#particle-canvas {
+    display: none !important;
+}
+
+.morphing-background {
+    display: none !important;
+}
+*/
+
+/* Replace with this to enable particles: */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    #particle-canvas {
+        opacity: 0.3; /* Lighter on mobile */
+    }
+}
+
+/* Keep mobile restrictions if you want */
+.mobile-device #particle-canvas {
+    display: none !important;
+}
+
+/* Touch device restrictions - optional */
+@media (hover: none) and (pointer: coarse) {
+    #particle-canvas {
+        display: none;
+    }
+}
