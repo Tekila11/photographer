@@ -1100,7 +1100,6 @@ const additionalAnimations = `
 const animationStyleSheet = document.createElement('style');
 animationStyleSheet.textContent = additionalAnimations;
 document.head.appendChild(animationStyleSheet);
-
 // === Service Cards Hover Background ===
 document.querySelectorAll('.service-card').forEach(card => {
   const bg = card.getAttribute('data-bg');
@@ -1115,6 +1114,8 @@ document.querySelectorAll('.service-card').forEach(card => {
     });
   }
 });
+
+
 // Floating nav active state on scroll
 const sections = document.querySelectorAll("section[id]");
 const navDots = document.querySelectorAll(".floating-nav .nav-dot");
@@ -1139,3 +1140,13 @@ function activateNavDot() {
 
 window.addEventListener("scroll", activateNavDot);
 
+
+// Top bar scroll effect
+window.addEventListener("scroll", () => {
+  const topBar = document.querySelector(".top-bar");
+  if (window.scrollY > 50) {
+    topBar.classList.add("scrolled");
+  } else {
+    topBar.classList.remove("scrolled");
+  }
+});
