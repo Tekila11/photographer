@@ -14,6 +14,7 @@
     box-sizing: border-box;
 }
 
+/* nav bar */
 /* Top Bar Styling */
 .top-bar {
   position: fixed;
@@ -25,10 +26,10 @@
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-.top-bar.scrolled {
+.top-bar.scrolled {	
   background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  backdrop-filter: blur(10	px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 .top-bar-content {
@@ -200,6 +201,79 @@ body {
 
 /* Hero Section - Mobile Optimized with Enhanced Animations */
 .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: clamp(1rem, 4vh, 2rem) 0;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.3;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: heroBackgroundFloat 20s ease-in-out infinite;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: blur(1px) brightness(0.7);
+    transition: all 0.6s ease;
+}
+
+.hero:hover .hero-bg img {
+    filter: blur(0px) brightness(0.5);
+    transform: scale(1.05);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+    animation: heroEnter 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.logo {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: clamp(2px, 1vw, 3px);
+    margin-bottom: clamp(2rem, 6vh, 4rem);
+    opacity: 0;
+    animation: logoSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    transform: translateX(-100px) rotate(-5deg);
+    position: relative;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    animation: logoUnderline 1s ease 1.5s forwards;
+}
+
+.logo span {
+    color: var(--accent);
+    display: inline-block;
+    animation: logoSpanBounce 2s ease 2s infinite;
+}
+
+.hero {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -252,78 +326,6 @@ body {
   opacity: 0.85;
 }
 
-.logo {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    font-weight: 700;
-    letter-spacing: clamp(2px, 1vw, 3px);
-    margin-bottom: clamp(2rem, 6vh, 4rem);
-    opacity: 0;
-    animation: logoSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-    transform: translateX(-100px) rotate(-5deg);
-    position: relative;
-}
-
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient);
-    animation: logoUnderline 1s ease 1.5s forwards;
-}
-
-.logo span {
-    color: var(--accent);
-    display: inline-block;
-    animation: logoSpanBounce 2s ease 2s infinite;
-}
-
-.hero h1 {
-    font-size: clamp(2rem, 8vw, 5rem);
-    font-weight: 800;
-    letter-spacing: clamp(-1px, -0.02em, -0.02em);
-    margin-bottom: clamp(1rem, 3vh, 2rem);
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-    opacity: 0;
-    transform: translateY(40px) scale(0.8);
-    position: relative;
-}
-
-.hero h1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(184, 134, 11, 0.1), transparent);
-    animation: titleShimmer 3s ease-in-out 2s infinite;
-}
-
-.hero h2 {
-    font-size: clamp(1.5rem, 6vw, 4rem);
-    font-weight: 300;
-    letter-spacing: clamp(2px, 1vw, 8px);
-    margin-bottom: clamp(2rem, 4vh, 3rem);
-    opacity: 0;
-    animation: subtitleSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
-    transform: translateX(60px) rotateY(15deg);
-}
-
-.hero-subtitle {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    margin-bottom: clamp(2rem, 4vh, 3rem);
-    opacity: 0;
-    font-weight: 300;
-    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
-    transform: translateY(30px);
-}
 
 .cta-group {
     display: flex;
@@ -757,6 +759,7 @@ body {
     box-shadow: 0 15px 40px rgba(184, 134, 11, 0.2);
     border-color: var(--accent);
 }
+
 
 .stat-number {
     font-size: clamp(2rem, 6vw, 3.5rem);
