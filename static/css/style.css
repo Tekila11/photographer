@@ -1891,13 +1891,13 @@ footer::before {
 }
 
 /* Remove random particle shapes and keep only subtle circle effect */
-#particle-canvas {
+/* #particle-canvas {
     display: none !important;
 }
 
 .morphing-background {
     display: none !important;
-}
+} */
 
 /* Add subtle background enhancement */
 .hero-bg::after {
