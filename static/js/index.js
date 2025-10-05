@@ -135,6 +135,7 @@ function initTopBarScroll() {
 // Image Gallery Modal
 function initImageModal() {
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const serviceCards = document.querySelectorAll('.service-card');
 
     // Create modal if doesn't exist
     let modal = document.querySelector('.image-modal');
@@ -155,22 +156,37 @@ function initImageModal() {
     const closeBtn = modal.querySelector('.modal-close');
     const backdrop = modal.querySelector('.modal-backdrop');
 
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const img = this.querySelector('img');
-            if (img) {
-                modalImg.src = img.src;
-                modalImg.alt = img.alt;
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
+    const openModal = (imgSrc, imgAlt) => {
+        modalImg.src = imgSrc;
+        modalImg.alt = imgAlt;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
 
     const closeModal = () => {
         modal.classList.remove('active');
         document.body.style.overflow = '';
     };
+
+    // Gallery items
+    galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                openModal(img.src, img.alt);
+            }
+        });
+    });
+
+    // Service cards
+    serviceCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const img = this.querySelector('.service-bg-img');
+            if (img) {
+                openModal(img.src, img.alt);
+            }
+        });
+    });
 
     closeBtn.addEventListener('click', closeModal);
     backdrop.addEventListener('click', closeModal);
